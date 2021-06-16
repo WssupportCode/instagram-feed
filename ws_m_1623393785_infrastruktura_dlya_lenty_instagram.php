@@ -37,7 +37,7 @@ class ws_m_1623393785_infrastruktura_dlya_lenty_instagram extends \WS\ReduceMigr
      * Write action by apply scenario. Use method `setData` for save need rollback data
      **/
     public function commit() {
-        global $DB, $USER;
+        global $DB;
         CModule::IncludeModule("ws.projectsettings");
         CModule::IncludeModule("iblock");
         $ib = new CIBlock;
@@ -45,9 +45,8 @@ class ws_m_1623393785_infrastruktura_dlya_lenty_instagram extends \WS\ReduceMigr
         $ibType = ""; /** Необходимо указать тип инфоблока */
         $siteId = "s1";
 
-        // Настройка доступа
         $arAccess = [
-            "2" => "R", // Все пользователи
+            "2" => "R",
         ];
         $arFields = [
             "ACTIVE" => "Y",
@@ -56,30 +55,28 @@ class ws_m_1623393785_infrastruktura_dlya_lenty_instagram extends \WS\ReduceMigr
             "IBLOCK_TYPE_ID" => $ibType,
             "SITE_ID" => $siteId,
             "SORT" => "5",
-            "GROUP_ID" => $arAccess, // Права доступа
+            "GROUP_ID" => $arAccess,
             'LIST_MODE' => 'C',
             "FIELDS" => [
                 "DETAIL_PICTURE" => [
-                    "IS_REQUIRED" => "N", // не обязательное
+                    "IS_REQUIRED" => "N",
                     "DEFAULT_VALUE" => [],
                 ],
                 "PREVIEW_PICTURE" => [
-                    "IS_REQUIRED" => "N", // не обязательное
+                    "IS_REQUIRED" => "N",
                     "DEFAULT_VALUE" => [],
                 ],
-                // Символьный код элементов
                 "CODE" => [
-                    "IS_REQUIRED" => "N", // Обязательное
+                    "IS_REQUIRED" => "N",
                     "DEFAULT_VALUE" => [
-                        "TRANSLITERATION" => "Y", // Транслитерировать
-                        "TRANS_SPACE" => "-", // Символы для замены
-                        "TRANS_CASE" => "L", // Приводить к нижнему регистру
+                        "TRANSLITERATION" => "Y",
+                        "TRANS_SPACE" => "-",
+                        "TRANS_CASE" => "L",
                     ],
                 ],
             ],
 
-            // Шаблоны страниц
-            "VERSION" => 1, // Хранение элементов в общей таблице
+            "VERSION" => 1,
 
             "ELEMENT_NAME" => "Блок",
             "ELEMENTS_NAME" => "Блоки",
