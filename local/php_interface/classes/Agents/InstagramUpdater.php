@@ -15,10 +15,18 @@ class InstagramUpdater extends BaseAgent
     public function algorithm() {
         $this->initModules();
         $token = WS_PSettings::getFieldValue("INSTAGRAM_TOKEN"); /** токен Instagram API (берется из настроек проекта) */
-        $inst = new Instagram($token);
-        $inst->count_post = WS_PSettings::getFieldValue("INSTAGRAM_NEWS_COUNT");; /** - кол-во выбираемых записей из ленты Instagram (берется из настроек проекта) */
-        $this->instPosts = $inst->getInstagramPosts();
-        self::preparePictures();
+        if (!empty($token)){
+            $inst = new Instagram($token);
+            if (WS_PSettings::getFieldValue("INSTAGRAM_NEWS_COUNT") > 0) {               /** - кол-во выбираемых записей из ленты Instagram (берется из настроек проекта) */
+                $inst->count_post = WS_PSettings::getFieldValue("INSTAGRAM_NEWS_COUNT"); /** - кол-во выбираемых записей из ленты Instagram (берется из настроек проекта) */
+            }else{
+                $inst->count_post = 10;
+            }
+            $this->instPosts = $inst->getInstagramPosts();
+            if ($this->instPosts["ERROR"] != "Y"){
+                self::preparePictures();
+            }
+        }
         return [];
     }
 

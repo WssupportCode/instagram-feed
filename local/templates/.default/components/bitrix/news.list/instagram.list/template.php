@@ -15,9 +15,11 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 $this->setFrameMode(true);
 ?>
 <?if(!empty($arResult["ITEMS"])):?>
-    <a href="https://www.instagram.com/<?=str_replace("@", "", WS_PSettings::getFieldValue("INSTAGRAM_PROFILE"))?>/?hl=ru" target="_blank" rel="nofollow">
-        <?=WS_PSettings::getFieldValue("INSTAGRAM_PROFILE")?>
-    </a>
+    <?php if (!empty($arResult["INSTAGRAM_PROFILE"])): ?>
+        <a href="https://www.instagram.com/<?=str_replace("@", "", $arResult["INSTAGRAM_PROFILE"])?>/?hl=ru" target="_blank" rel="nofollow">
+            <?=$arResult["INSTAGRAM_PROFILE"]?>
+        </a>
+    <?php endif; ?>
     <div class="insta-list">
         <ul class="insta-list__list">
             <?foreach($arResult["ITEMS"] as $i=>$arItem):?>

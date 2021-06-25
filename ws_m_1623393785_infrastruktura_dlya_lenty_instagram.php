@@ -43,7 +43,7 @@ class ws_m_1623393785_infrastruktura_dlya_lenty_instagram extends \WS\ReduceMigr
         $ib = new CIBlock;
 
         $ibType = ""; /** Необходимо указать тип инфоблока */
-        $siteId = "s1";
+        $siteId = ""; /** Необходимо указать SITE_ID */
 
         $arAccess = [
             "2" => "R",
