@@ -129,14 +129,14 @@ class ws_m_1623393785_infrastruktura_dlya_lenty_instagram extends \WS\ReduceMigr
         WS_PSettings::setupField([
             'label' => 'Токен Instagram',
             'name' => 'INSTAGRAM_TOKEN',
-            'type' => 'iblock',
-            'value' => $ID,
+            'type' => 'string',
+            'value' => "",
         ]);
         WS_PSettings::setupField([
             'label' => 'Кол-во новостей для выборки Instagram',
             'name' => 'INSTAGRAM_NEWS_COUNT',
-            'type' => 'iblock',
-            'value' => $ID,
+            'type' => 'number',
+            'value' => "",
         ]);
         // my code
     }

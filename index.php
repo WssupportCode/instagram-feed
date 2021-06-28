@@ -5,6 +5,7 @@ $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "instagram.list",                                           /** Базовый шаблон для вывода изображений из Instagram */
     Array(
+        "ACTIVE" => "Y",
         "ACTIVE_DATE_FORMAT" => "d M",
         "CACHE_GROUPS" => "N",
         "CACHE_TIME" => "86400",
@@ -13,7 +14,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_NAME" => "Y",
         "DISPLAY_PICTURE" => "N",
         "FIELD_CODE" => array(),
-        "IBLOCK_ID" => WS_PSettings::getFieldValue("INSTAGRAM_IBLOCK_ID"), /** ID инфоблока Instagram (берется из настроек проекта) */
+        "IBLOCK_ID" => WS_PSettings::getFieldValue("IB_INSTAGRAM"), /** ID инфоблока Instagram (берется из настроек проекта) */
         "IBLOCK_TYPE" => "content",
         "NEWS_COUNT" => "10",                                                   /** Кол-во выводимых записей */
         "PROPERTY_CODE" => array("FILE", "URL"),

@@ -50,8 +50,8 @@ class InstagramUpdater extends BaseAgent
                     $rawPic = CFile::MakeFileArray($post["media_url"]);
                 }
                 $arrProp = Array();
-                $arrProp[$this->getPropertyId("PICTURE")] = Array("VALUE" => $rawPic );
-                $arrProp[$this->getPropertyId("LINK")] = $post["permalink"];
+                $arrProp[$this->getPropertyId("FILE")] = Array("VALUE" => $rawPic );
+                $arrProp[$this->getPropertyId("URL")] = $post["permalink"];
                 $fields = array(
                     "IBLOCK_SECTION_ID" => false,
                     "IBLOCK_ID"      => $this->getIblockId($this->ibCode),
@@ -60,12 +60,7 @@ class InstagramUpdater extends BaseAgent
                     "PROPERTY_VALUES"=> $arrProp,
                 );
                 $el = new CIBlockElement;
-                if ($element = $el->Add($fields)) {
-
-                    /** символьный код почтового события и ID сайта */
-
-                    \CEvent::Send("NEW_INSTAGRAM_POST", "s1", array("ID" => $element));
-                }
+                $element = $el->Add($fields);
             }
         }
     }
